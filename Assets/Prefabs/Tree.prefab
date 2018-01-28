@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4736930267926156}
   - component: {fileID: 114319450027529736}
+  - component: {fileID: 114150041221707202}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -37,12 +38,40 @@ GameObject:
   - component: {fileID: 4818780506182408}
   - component: {fileID: 114918081784271354}
   m_Layer: 0
-  m_Name: StalkOrigin
-  m_TagString: Untagged
+  m_Name: TreeGenerator
+  m_TagString: TreeGenerators
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1950654246636620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4373165519299464}
+  m_Layer: 0
+  m_Name: TesselHolder
+  m_TagString: TesselHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4373165519299464
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950654246636620}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4736930267926156}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4736930267926156
 Transform:
   m_ObjectHideFlags: 1
@@ -54,6 +83,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4818780506182408}
+  - {fileID: 4373165519299464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70,6 +100,21 @@ Transform:
   m_Father: {fileID: 4736930267926156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114150041221707202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114645176236838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa5a94355a75a043a141d50cb03b6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0
+  treeGenList: []
+  treeGenPrefab: {fileID: 1573954032431030, guid: 3b820387ee6fb544ca73730aa2a2a731,
+    type: 2}
 --- !u!114 &114319450027529736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,7 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa5a94355a75a043a141d50cb03b6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeGenerator: {fileID: 0}
+  Height: 0
+  treeGenList: []
+  treeGenPrefab: {fileID: 0}
 --- !u!114 &114918081784271354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795c715ea6b862b4c97afc9fbdaff12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stalkPiece: {fileID: 1817314357828192, guid: 3fbfb8b7529e6e54c992d1e0488fd06a, type: 2}
-  lastStalk: {fileID: 4818780506182408}
-  treeGenerator: {fileID: 1763837561337496}
-  treeManager: {fileID: 0}
-  canGrow: 0
+  stalk: {fileID: 1101513916624346, guid: a1c6e725f3e9c8e42aff0ba959c8ddc8, type: 2}
+  leaves: {fileID: 1931125694663532, guid: 048b70626fd558a47a803171f5cff825, type: 2}
+  tesselHolder: {fileID: 0}
+  isLeaves: 0
+  lerpTime: 0.01

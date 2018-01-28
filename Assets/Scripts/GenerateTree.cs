@@ -4,50 +4,50 @@ using UnityEngine;
 
 public class GenerateTree : MonoBehaviour {
 
-	public GameObject stalkPiece;
-	public Transform lastStalk;
-	public GameObject treeGenerator;
-	public TreeManager treeManager;
+	public GameObject stalk;
+	public GameObject leaves;
+	public Transform tesselHolder;
 
-	public bool canGrow;
+	public bool isGrowing = false;
+	public bool isLeaves;
 
-	bool isGrowing;
-	bool canRamify = true;
+	private float randomRotation;
+	private float time;
 
-	// Use this for initialization
-	void Start () {
-		lastStalk.position = transform.position;
+	void Start ()
+	{
+		InvokeRepeating ("RandomRotation", 1.5f, 0.5f);
+		tesselHolder = GameObject.FindGameObjectWithTag ("TesselHolder").transform;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (lastStalk.position.y >= treeManager.Height) {
-			canGrow = false;
-		} else {
-			canGrow = true;
-		}
 
-		if (canGrow && Input.GetKey (KeyCode.Space)) {
+	void Update ()
+	{
+		//transform.position = new Vector2 (Random.insideUnitCircle.x, transform.position.y);
+
+		transform.rotation = Quaternion.Euler (new Vector3 (0,0, randomRotation));
+		if (Input.GetKey (KeyCode.Space) && !isGrowing) {
 			isGrowing = true;
-		} else {
-			isGrowing = false;
-		}
-
-		if (lastStalk.position.y >= treeManager.Height && canRamify) {
-			canRamify = false;
 		}
 
 		if (isGrowing) {
-			lastStalk = Instantiate (stalkPiece, new Vector3 (lastStalk.position.x + Random.Range (-0.15f, 0.15f), lastStalk.position.y), Quaternion.identity, treeManager.transform).transform;
-			lastStalk = Instantiate (stalkPiece, new Vector3 (lastStalk.position.x + Random.Range (-0.2f, 0.2f), lastStalk.position.y), Quaternion.identity, treeManager.transform).transform;
-			lastStalk = Instantiate (stalkPiece, new Vector3 (lastStalk.position.x + Random.Range (-0.25f, 0.25f), lastStalk.position.y), Quaternion.identity, treeManager.transform).transform;
-			lastStalk = Instantiate (stalkPiece, new Vector3 (lastStalk.position.x + Random.Range (-0.1f, 0.1f), lastStalk.position.y + 0.1f), Quaternion.identity, treeManager.transform).transform;
-
+			Transform currentStalk;
+			transform.Translate (transform.up/20);
+			currentStalk = Instantiate (stalk, new Vector2 (transform.position.x + Random.Range (-0.25f, 0.25f), transform.position.y), Quaternion.identity, tesselHolder).transform;
+			currentStalk.localScale = new Vector3 (currentStalk.localScale.x, currentStalk.localScale.y, currentStalk.localScale.z);
+			if (isLeaves && isGrowing) {
+				InvokeRepeating ("CreateLeaves", 0.1f, 0.1f);
+				isLeaves = false;
+			}
 		}
-
-
-
-
 	}
-		
+
+	void RandomRotation ()
+	{
+		randomRotation = Random.Range (-45f, 45f);
+	}
+
+	void CreateLeaves ()
+	{
+		Instantiate (leaves, new Vector2 (transform.position.x + Random.Range (-2f, 2f), transform.position.y + Random.Range (-2f, 2f)), Quaternion.Euler (new Vector3 (0,0, Random.Range (-90, 90))), tesselHolder);
+	}
 }

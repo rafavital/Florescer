@@ -51,10 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795c715ea6b862b4c97afc9fbdaff12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stalkPiece: {fileID: 1817314357828192, guid: 3fbfb8b7529e6e54c992d1e0488fd06a, type: 2}
-  lastStalk: {fileID: 4582126568934048}
-  treeGenerator: {fileID: 1573954032431030}
-  tree: {fileID: 4736930267926156, guid: fff04f77a592180409a75dfc69180a05, type: 2}
-  height: 3
-  width: 0
-  isGrowing: 0
+  stalk: {fileID: 1101513916624346, guid: a1c6e725f3e9c8e42aff0ba959c8ddc8, type: 2}
+  leaves: {fileID: 1931125694663532, guid: 048b70626fd558a47a803171f5cff825, type: 2}
+  tesselHolder: {fileID: 0}
+  isLeaves: 0
+  lerpTime: 0.5
