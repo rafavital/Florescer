@@ -32,7 +32,7 @@ public class GenerateTree : MonoBehaviour {
 		if (isGrowing) {
 			Transform currentStalk;
 			transform.Translate (transform.up/20);
-			currentStalk = Instantiate (stalk, new Vector2 (transform.position.x + Random.Range (-0.25f, 0.25f), transform.position.y), Quaternion.identity, tesselHolder).transform;
+			currentStalk = Instantiate (stalk, new Vector3 (transform.position.x + Random.Range (-0.25f, 0.25f), transform.position.y, Random.Range (-1f, 5f)), Quaternion.identity, tesselHolder).transform;
 			currentStalk.localScale = new Vector3 (currentStalk.localScale.x, currentStalk.localScale.y, currentStalk.localScale.z);
 			if (isLeaves && isGrowing) {
 				InvokeRepeating ("CreateLeaves", 0.1f, 0.1f);
